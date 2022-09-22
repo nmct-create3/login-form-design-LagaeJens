@@ -2,11 +2,25 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: 'Inter Web';
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Inter Web';
+    src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+    font-weight: 700;
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
-:root {}
+:root {
+    accent-color: hotpink;
+}
 
 /* CSS variables here */
 
@@ -23,12 +37,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: 'Inter Web', Helvetica, arial, sans-serif;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: #f5f6fa;
 }
 
 *,
@@ -44,14 +58,8 @@ html {
 * Customize the background color to match your design.
 */
 
-::-moz-selection {
-    background: HotPink;
-    color: white;
-    text-shadow: none;
-}
-
 ::selection {
-    background: HotPink;
+    background: #3385ff;
     color: white;
     text-shadow: none;
 }
@@ -156,19 +164,25 @@ hr {
 }
 
 a {
-    color: HotPink;
-    transition: all .1s ease-in-out;
+    color: #3385ff;
+    transition: all 0.1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: #3385ff;
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: #2e77e6;
 }
+
+label,
+input {
+    display: block;
+}
+
 
 /*------------------------------------*\
 #OBJECTS
@@ -187,6 +201,32 @@ a:focus {
 
 .o-row--login {
     /* stuff here to align the card */
+}
+
+.c-card {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1)
+}
+
+.c-header__header {
+    padding: 48px 48px 0;
+}
+
+.c-card__body {
+    padding: 48px;
+}
+
+
+
+.c-card__title {
+    line-height: 32px;
+    text-align: center;
+}
+
+.c-card__footer {
+    padding: 24px;
+    text-align: center;
 }
 
 /* size modifiers */
@@ -431,6 +471,27 @@ a:focus {
     ---
     Website main logo
 */
+.c-logo {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.c-logo__svg {
+    height: 100%;
+}
+
+.c-logo__path--1 {
+    fill: #20223a;
+}
+
+.c-logo__path--2 {
+    fill: #3385ff;
+}
+
+.c-logo__path--3 {
+    fill: #1b4186;
+}
 
 /*
     Component: Card
@@ -443,6 +504,10 @@ a:focus {
     ---
     Everything form related here
 */
+.c-form-field--option {
+    display: flex;
+    gap: 8px;
+}
 
 /*
     Component: Input
@@ -450,9 +515,26 @@ a:focus {
     Class to put on all input="text" like form inputs
 */
 
-.c-input {}
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e2e3e7;
+    border-radius: 3px;
+    line-height: 24px;
+    padding: 11px 16px;
+    outline: none;
+}
 
-.c-input:focus {}
+
+.c-input:focus {
+    border-color: #3385ff;
+    /* box-shadow: 0 0 0 3px #4f95ff; */
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, .3);
+}
 
 /*
     Component: Label
@@ -460,7 +542,17 @@ a:focus {
     Class to put on all form labels
 */
 
-.c-label {}
+.c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274;
+}
+
+.c-label--option {
+    display: flex;
+    align-items: center;
+}
 
 /* If a input is focused within the form-field class change te color of the label */
 
@@ -472,15 +564,40 @@ a:focus {
     Class to put on form buttons or links
 */
 
-.c-button {}
+.c-button {
+    font-size: large;
+    font-weight: 600;
+    border: #2E77E6;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #3385FF;
+    line-height: 24px;
+    padding: 14px 16px;
+    width: 100%;
+    outline: none;
+    transition: all .1s ease;
 
-.c-button:hover {}
+}
 
-.c-button:focus {}
+.c-button:hover {
+    background-color: #4F95FF;
 
-.c-button:active {}
+}
 
-.c-button--block {}
+
+.c-button:focus {
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, .3);
+}
+
+.c-button:active {
+    background-color: #2e77e6;
+    box-shadow: none;
+}
+
+.c-button--block {
+    display: block;
+    width: 100%;
+}
 
 /*------------------------------------*\
 #UTILITIES
@@ -524,6 +641,7 @@ a:focus {
 
 .u-mb-md {
     margin-bottom: 16px !important;
+    color: #757787;
 }
 
 .u-mb-lg {
@@ -559,7 +677,6 @@ a:focus {
 .u-max-width-none {
     max-width: none !important;
 }
-
 
 /*
     Utilities: align
@@ -881,20 +998,20 @@ No media query since this is the default in mobile first design
     }
 
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: ' ('attr(href) ')';
     }
 
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: ' ('attr(title) ')';
     }
 
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    a[href^='#']:after,
+    a[href^='javascript:']:after {
+        content: '';
     }
 
     pre {
